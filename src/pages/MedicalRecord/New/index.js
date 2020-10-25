@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import LaddaButton, { XL, EXPAND_RIGHT } from "react-ladda";
+import ReactLoading from "react-loading";
 
 import { Header } from "./../../../components";
 
-export default function New() {
+export default function New({ history }) {
+  const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+
+  const handleSending = () => {
+    setSending(true);
+    setMessage("Processing data...");
+
+    setTimeout(() => setMessage("Validating data..."), 2000);
+    setTimeout(() => setMessage("Sending video..."), 5000);
+    setTimeout(() => history.push("/dashboard"), 8000);
+  };
+
   return (
     <>
       {<Header />}
@@ -17,7 +31,7 @@ export default function New() {
                 class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
                 for="grid-first-name"
               >
-                First Name
+                Tipo de Rodovia
               </label>
               <input
                 class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
@@ -118,9 +132,26 @@ export default function New() {
               />
             </div>
           </div>
-          <button class="bg-blue-400 text-white px-3 py-2 mt-10 rounded w-full mt-4 max-w-xs m-auto">
-            Criar
-          </button>
+          <h2 class="text-xl mt-10 font-bold text-center text-gray-800">
+            {message}
+          </h2>
+          {sending ? (
+            <div class="m-auto flex justify-center">
+              <ReactLoading
+                type={"bars"}
+                color={"black"}
+                height={50}
+                width={50}
+              />
+            </div>
+          ) : (
+            <button
+              onClick={handleSending}
+              class="bg-blue-400 text-white px-3 py-2 mt-10 rounded w-full mt-4 max-w-xs m-auto"
+            >
+              Submeter
+            </button>
+          )}
         </div>
       </div>
     </>
