@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import LaddaButton, { XL, EXPAND_RIGHT } from "react-ladda";
 import ReactLoading from "react-loading";
 
-import { Header } from "./../../../components";
+import { Header, FormSelect } from "./../../../components";
 
 export default function New({ history }) {
   const [message, setMessage] = useState("");
@@ -57,114 +57,87 @@ export default function New({ history }) {
               Arquivos selecionados: {files.map((f) => f.name).join(", ")}
             </div>
           )}
-          <div class="-mx-3 md:flex mb-6">
-            <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                for="grid-first-name"
-              >
-                Tipo de Rodovia
-              </label>
-              <input
-                class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
-                id="grid-first-name"
-                type="text"
-                placeholder="Jane"
-              />
-              <p class="text-red text-xs italic">Please fill out this field.</p>
-            </div>
-            <div class="md:w-1/2 px-3">
-              <label
-                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                for="grid-last-name"
-              >
-                Last Name
-              </label>
-              <input
-                class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                id="grid-last-name"
-                type="text"
-                placeholder="Doe"
-              />
-            </div>
-          </div>
-          <div class="-mx-3 md:flex mb-6">
-            <div class="md:w-full px-3">
-              <label
-                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                for="grid-password"
-              >
-                Password
-              </label>
-              <input
-                class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
-                id="grid-password"
-                type="password"
-                placeholder="******************"
-              />
-              <p class="text-grey-dark text-xs italic">
-                Make it as long and as crazy as you'd like
-              </p>
-            </div>
-          </div>
-          <div class="-mx-3 md:flex mb-2">
-            <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                for="grid-city"
-              >
-                City
-              </label>
-              <input
-                class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                id="grid-city"
-                type="text"
-                placeholder="Albuquerque"
-              />
-            </div>
-            <div class="md:w-1/2 px-3">
-              <label
-                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                for="grid-state"
-              >
-                State
-              </label>
-              <div class="relative">
-                <select
-                  class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
-                  id="grid-state"
-                >
-                  <option>New Mexico</option>
-                  <option>Missouri</option>
-                  <option>Texas</option>
-                </select>
-                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                  <svg
-                    class="h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div class="md:w-1/2 px-3">
-              <label
-                class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                for="grid-zip"
-              >
-                Zip
-              </label>
-              <input
-                class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                id="grid-zip"
-                type="text"
-                placeholder="90210"
-              />
-            </div>
-          </div>
-          <h2 class="text-xl mt-10 font-bold text-center text-gray-800">
+          {
+            <FormSelect
+              options={[
+                "Pista dupla com canteiro central",
+                "Pista dupla com barreira central",
+                "Pista dupla com faixa central",
+                "Pista simples de mão única",
+                "Pista simples de mão dupla",
+              ]}
+              title="Tipo de Rodovia"
+            />
+          }
+
+          {
+            <FormSelect
+              options={["Plano", "Ondulado ou Montanhoso"]}
+              title="Perfil da Rodovia"
+            />
+          }
+
+          {
+            <FormSelect
+              options={[
+                "Possui faixa adicional de subida",
+                "NÃO possui faixa adicional de subida",
+              ]}
+              title="Faixa Adicional de Subida"
+            />
+          }
+
+          {
+            <FormSelect
+              options={[
+                "Possui ponte ou viaduto",
+                "NÃO possui ponte ou viaduto",
+              ]}
+              title="Pontes / Viadutos"
+            />
+          }
+
+          {
+            <FormSelect
+              options={[
+                "Trecho COM curvas perigosas",
+                "Trecho SEM curvas perigosas",
+              ]}
+              title="Presença de Curvas Perigosas"
+            />
+          }
+
+          {
+            <FormSelect
+              options={[
+                "COM placas E COM defensas",
+                "COM placas E SEM defensas",
+                "SEM placas E COM defensas",
+                "SEM placas E SEM defensas",
+              ]}
+              title="Condições das Curvas Perigosas"
+            />
+          }
+
+          {
+            <FormSelect
+              options={["COM Acostamento", "SEM Acostamento"]}
+              title="Acostamento"
+            />
+          }
+          {
+            <FormSelect
+              options={[
+                "Pavimentado perfeito",
+                "NÃO pavimentado perfeito",
+                "Más condições",
+                "Destruído",
+              ]}
+              title=" Pavimento do Acostamento"
+            />
+          }
+
+          <h2 class="text-xl mt-5 font-bold text-center text-gray-800">
             {message}
           </h2>
           {sending ? (
@@ -179,7 +152,7 @@ export default function New({ history }) {
           ) : (
             <button
               onClick={handleSending}
-              class="bg-blue-400 text-white px-3 py-2 mt-10 rounded w-full mt-4 max-w-xs m-auto"
+              class="bg-blue-400 text-white px-3 py-2 mt-5 rounded w-full mt-4 max-w-xs m-auto"
             >
               Submeter
             </button>
