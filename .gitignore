@@ -6,3 +6,8 @@ npm-debug.*
 *.p12
 *.key
 *.mobileprovision
+
+src/*
+public/*
+build/static/css/*.map
+build/static/js/*.map
