@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import LaddaButton, { XL, EXPAND_RIGHT } from "react-ladda";
 import ReactLoading from "react-loading";
 
-import { Header, FormSelect } from "./../../../components";
+import { Header } from "./../../../components";
 
 export default function New({ history }) {
   const [message, setMessage] = useState("");
@@ -21,6 +21,32 @@ export default function New({ history }) {
   const handleChange = (event) => {
     setFiles([...event.target.files]);
   };
+
+  function FormSelect({ options = [], title }) {
+    return (
+      <div class="px-3 mb-6">
+        <label
+          class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          for="grid-first-name"
+        >
+          {title}
+        </label>
+        <select class="appearance-none bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4">
+          {options.map((option) => (
+            <option class="py-1">{option}</option>
+          ))}
+        </select>
+        <select class="appearance-none bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4">
+          <option class="py-1">10</option>
+          <option class="py-1">20</option>
+          <option class="py-1">30</option>
+          <option class="py-1">40</option>
+          <option class="py-1">50</option>
+          <option class="py-1">60</option>
+        </select>
+      </div>
+    );
+  }
 
   return (
     <>
