@@ -7,7 +7,7 @@ export default function Login({ history }) {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    if (email == "admin@email.com" && password == "123456") {
+    if (email === "admin@email.com" && password === "123456") {
       history.push("/dashboard");
     } else {
       setStatus("error");
@@ -46,7 +46,7 @@ export default function Login({ history }) {
                 </label>
                 <input
                   class={`shadow appearance-none border ${
-                    status == "error" ? "border-red-500" : ""
+                    status === "error" ? "border-red-500" : ""
                   } rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
                   id="password"
                   type="password"
@@ -54,7 +54,7 @@ export default function Login({ history }) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                {status == "error" ? (
+                {status === "error" ? (
                   <p class="text-red-500 text-xs italic">
                     Please choose a password.
                   </p>
