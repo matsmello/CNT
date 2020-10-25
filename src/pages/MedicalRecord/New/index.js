@@ -7,6 +7,7 @@ import { Header } from "./../../../components";
 export default function New({ history }) {
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
+  const [files, setFiles] = useState([]);
 
   const handleSending = () => {
     setSending(true);
@@ -17,6 +18,10 @@ export default function New({ history }) {
     setTimeout(() => history.push("/dashboard"), 8000);
   };
 
+  const handleChange = (event) => {
+    setFiles([...event.target.files]);
+  };
+
   return (
     <>
       {<Header />}
@@ -25,6 +30,33 @@ export default function New({ history }) {
           <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">
             Nova Ficha
           </h2>
+          <div class="flex items-center mb-5 bg-grey-lighter">
+            <label class="w-64 flex flex-col items-center px-4 py-2 bg-white text-blue-800 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-400 hover:text-white">
+              <svg
+                class="w-6 h-6"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+              </svg>
+              <span class="mt-2 text-base leading-normal">
+                Selecionar arquivos
+              </span>
+              <input
+                type="file"
+                class="hidden"
+                multiple
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+
+          {files.length != 0 && (
+            <div class="mb-5">
+              Arquivos selecionados: {files.map((f) => f.name).join(", ")}
+            </div>
+          )}
           <div class="-mx-3 md:flex mb-6">
             <div class="md:w-1/2 px-3 mb-6 md:mb-0">
               <label
