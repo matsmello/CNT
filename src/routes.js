@@ -12,8 +12,8 @@ import Dashboard from "./pages/Dashboard";
 const Index = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/" exact={true} component={App} />
+      <Route path="/" component={Login} />
+      {/* <Route path="/" exact={true} component={App} /> */}
       <Route path="/list" component={List} />
       <Route path="/new" component={New} />
       <Route path="/patient" component={Patient} />
