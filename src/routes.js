@@ -7,6 +7,7 @@ import "./assets/main.css";
 import List from "./pages/MedicalRecord/List";
 import New from "./pages/MedicalRecord/New";
 import Patient from "./pages/Patient";
+import Dashboard from "./pages/Dashboard";
 
 const Index = () => (
   <BrowserRouter>
@@ -16,6 +17,7 @@ const Index = () => (
       <Route path="/list" component={List} />
       <Route path="/new" component={New} />
       <Route path="/patient" component={Patient} />
+      <Route path="/dashboard" component={Dashboard} />
     </Switch>
   </BrowserRouter>
 );
