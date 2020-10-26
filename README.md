@@ -1,4 +1,4 @@
-# Cuidar +
+# Moving
 
 Hackathon CNT
 
@@ -18,7 +18,7 @@ Hackathon CNT
 
 ## Instalação
 
-Use o gerenciador de pacotes [yarn](https://yarnpkg.com/) para instalar o Cuidar +.
+Use o gerenciador de pacotes [yarn](https://yarnpkg.com/) para instalar o Moving.
 
 ```bash
 yarn install
