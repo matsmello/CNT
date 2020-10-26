@@ -8,6 +8,7 @@ export default function New({ history }) {
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [files, setFiles] = useState([]);
+  const [filesReport, setFilesReport] = useState([]);
 
   const handleSending = () => {
     setSending(true);
@@ -16,6 +17,10 @@ export default function New({ history }) {
     setTimeout(() => setMessage("Validating data..."), 2000);
     setTimeout(() => setMessage("Sending video..."), 5000);
     setTimeout(() => history.push("/dashboard"), 8000);
+  };
+
+  const handleChangeReport = (event) => {
+    setFilesReport([...event.target.files]);
   };
 
   const handleChange = (event) => {
@@ -67,7 +72,7 @@ export default function New({ history }) {
                 <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
               </svg>
               <span class="mt-2 text-base leading-normal">
-                Selecionar arquivos
+                Selecionar video
               </span>
               <input
                 type="file"
@@ -81,6 +86,34 @@ export default function New({ history }) {
           {files.length != 0 && (
             <div class="mb-5">
               Arquivos selecionados: {files.map((f) => f.name).join(", ")}
+            </div>
+          )}
+
+          <div class="flex items-center mb-5 bg-grey-lighter">
+            <label class="w-64 flex flex-col items-center px-4 py-2 bg-white text-blue-800 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-400 hover:text-white">
+              <svg
+                class="w-6 h-6"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+              </svg>
+              <span class="mt-2 text-base leading-normal">
+                Selecionar ficha
+              </span>
+              <input
+                type="file"
+                class="hidden"
+                multiple
+                onChange={handleChangeReport}
+              />
+            </label>
+          </div>
+
+          {filesReport.length != 0 && (
+            <div class="mb-5">
+              Arquivos selecionados: {filesReport.map((f) => f.name).join(", ")}
             </div>
           )}
           {
