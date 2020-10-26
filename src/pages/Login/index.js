@@ -7,11 +7,11 @@ export default function Login({ history }) {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    if (email === "admin@email.com" && password === "123456") {
-      history.push("/dashboard");
-    } else {
-      setStatus("error");
-    }
+    history.push("/dashboard");
+    // if (email === "admin@email.com" && password === "123456") {
+    // } else {
+    //   setStatus("error");
+    // }
   };
 
   return (
